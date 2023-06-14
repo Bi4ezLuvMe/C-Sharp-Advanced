@@ -1,0 +1,1 @@
+Console.WriteLine(string.Join(Environment.NewLine, Console.ReadLine().Split(" ")));
