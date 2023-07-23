@@ -242,6 +242,7 @@
             this.label2.TabIndex = 16;
             this.label2.Text = ".|.";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label2.Visible = false;
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // TicTacToe

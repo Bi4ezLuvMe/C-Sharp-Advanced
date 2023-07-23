@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Drawing.Text;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
@@ -8,6 +11,7 @@ namespace tic_tac_toe
     public partial class TicTacToe : Form
     {
         public int Counter = 0;
+        List<int> numbers = new List<int> {1,2,3,4,5,6,7,8,9};
         public TicTacToe()
         {
             InitializeComponent();
@@ -95,24 +99,77 @@ namespace tic_tac_toe
         private void Computer()
         {
             Random random = new Random();
-            int index = random.Next(1, 9);
-            bool temp = false;
-            while (temp == false)
+            int index = random.Next(numbers.Count);
+            switch (index)
             {
-                if (index == 1) { if (button2.Text == "-") { button2.Text = "O"; button2.IsAccessible = false; temp = true; } else { index++; } }
-                if (index == 2) { if (button3.Text == "-") { button3.Text = "O"; button3.IsAccessible = false; temp = true; } else { index++; } }
-                if (index == 3) { if (button4.Text == "-") { button4.Text = "O"; button4.IsAccessible = false; temp = true; } else { index++; } }
-                if (index == 4) { if (button5.Text == "-") { button5.Text = "O"; button5.IsAccessible = false; temp = true; } else { index++; } }
-                if (index == 5) { if (button6.Text == "-") { button6.Text = "O"; button6.IsAccessible = false; temp = true; } else { index++; } }
-                if (index == 6) { if (button7.Text == "-") { button7.Text = "O"; button7.IsAccessible = false; temp = true; } else { index++; } }
-                if (index == 7) { if (button8.Text == "-") { button8.Text = "O"; button8.IsAccessible = false; temp = true; } else { index++; } }
-                if (index == 8) { if (button9.Text == "-") { button9.Text = "O"; button9.IsAccessible = false; temp = true; } else { index++; } }
-                if (index == 9) { if (button10.Text == "-") { button10.Text = "O"; button10.IsAccessible = false; temp = true; } else { index = 1; } }
+                case 0:Text(GetNumber(0)); numbers.RemoveAt(0); break;
+                case 1: Text(GetNumber(1)); numbers.RemoveAt(1); break;
+                case 2: Text(GetNumber(2)); numbers.RemoveAt(2); break;
+                case 3: Text(GetNumber(3)); numbers.RemoveAt(3); break;
+                case 4: Text(GetNumber(4)); numbers.RemoveAt(4); break;
+                case 5: Text(GetNumber(5)); numbers.RemoveAt(5); break;
+                case 6: Text(GetNumber(6)); numbers.RemoveAt(6); break;
+                case 7: Text(GetNumber(7)); numbers.RemoveAt(7); break;
+                case 8: Text(GetNumber(8)); numbers.RemoveAt(8); break;
+            }
+            int GetNumber(int index1)
+            {
+                if (numbers.ElementAt(index1) == 1)
+                {
+                    return 1;
+                }else if(numbers.ElementAt(index1) == 2)
+                {
+                    return 2;
+                }
+                else if (numbers.ElementAt(index1) == 3)
+                {
+                    return 3;
+                }
+                else if (numbers.ElementAt(index1) == 4)
+                {
+                    return 4;
+                }
+                else if (numbers.ElementAt(index1) == 5)
+                {
+                    return 5;
+                }
+                else if (numbers.ElementAt(index1) == 6)
+                {
+                    return 6;
+                }
+                else if (numbers.ElementAt(index1) == 7)
+                {
+                    return 7;
+                }
+                else if (numbers.ElementAt(index1) == 8)
+                {
+                    return 8;
+                }
+                else if (numbers.ElementAt(index1) == 9)
+                {
+                    return 9;
+                }
+                return 0;
+            }
+            void Text(int index2)
+            {
+                switch (index2)
+                {
+                    case 1:button2.Text = "O"; button2.IsAccessible = false; break;
+                    case 2: button3.Text = "O"; button3.IsAccessible = false; break;
+                    case 3: button4.Text = "O"; button4.IsAccessible = false; break;
+                    case 4: button5.Text = "O"; button5.IsAccessible = false; break;
+                    case 5: button6.Text = "O"; button6.IsAccessible = false; break;
+                    case 6: button7.Text = "O"; button7.IsAccessible = false; break;
+                    case 7: button8.Text = "O"; button8.IsAccessible = false; break;
+                    case 8: button9.Text = "O"; button9.IsAccessible = false; break;
+                    case 9: button10.Text = "O"; button10.IsAccessible = false; break;
+                }
             }
         }
         private void label1_Click(object sender, EventArgs e)
         {
-
+          
         }
 
         public void button1_Click_1(object sender, EventArgs e)
@@ -126,6 +183,7 @@ namespace tic_tac_toe
             button8.Visible = true;
             button9.Visible = true;
             button10.Visible = true;
+            label2.Visible = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -133,6 +191,7 @@ namespace tic_tac_toe
             if (button2.Text == "-")
             {
                 button2.Text = "X";
+                numbers.Remove(1);
                 button2.IsAccessible = false;
                 Counter++;
                 if (Counter != 9)
@@ -160,6 +219,7 @@ namespace tic_tac_toe
             if (button3.Text == "-")
             {
                 button3.Text = "X";
+                numbers.Remove(2);
                 button3.IsAccessible = false;
                 Counter++;
                 if (Counter != 9)
@@ -187,6 +247,7 @@ namespace tic_tac_toe
             if (button4.Text == "-")
             {
                 button4.Text = "X";
+                     numbers.Remove(3); 
                 button4.IsAccessible = false;
                 Counter++;
                 if (Counter != 9)
@@ -214,6 +275,7 @@ namespace tic_tac_toe
             if (button5.Text == "-")
             {
                 button5.Text = "X";
+                numbers.Remove(4);
                 button5.IsAccessible = false;
                 Counter++;
                 if (Counter != 9)
@@ -224,6 +286,7 @@ namespace tic_tac_toe
                 if (isComputerWon())
                 {
                     label2.Text = "Computer won! Better luck next time!";
+                   
                 }
                 else if(isHumanWon())
                 {
@@ -241,6 +304,7 @@ namespace tic_tac_toe
             if (button6.Text == "-")
             {
                 button6.Text = "X";
+                numbers.Remove(5);
                 button6.IsAccessible = false;
                 Counter++;
                 if (Counter != 9)
@@ -268,6 +332,7 @@ namespace tic_tac_toe
             if (button7.Text == "-")
             {
                 button7.Text = "X";
+                numbers.Remove(6);
                 button7.IsAccessible = false;
                 Counter++;
                 if (Counter != 9)
@@ -295,6 +360,7 @@ namespace tic_tac_toe
             if (button8.Text == "-")
             {
                 button8.Text = "X";
+                numbers.Remove(7);
                 button8.IsAccessible = false;
                 Counter++;
                 if (Counter != 9)
@@ -322,6 +388,7 @@ namespace tic_tac_toe
             if (button9.Text == "-")
             {
                 button9.Text = "X";
+                numbers.Remove(8);
                 button9.IsAccessible = false;
                 Counter++;
                 if (Counter != 9)
@@ -349,6 +416,7 @@ namespace tic_tac_toe
             if (button10.Text == "-")
             {
                 button10.Text = "X";
+                numbers.Remove(9);
                 button10.IsAccessible = false;
                 Counter++;
                 if (Counter != 9)
